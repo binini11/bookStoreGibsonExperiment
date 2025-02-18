@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gibson School Library</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="container">
+      <h1>Gibson School Book Store</h1>
+      <p>Explore our collection of books</p>
+      <img
+        src="bookImage/gibsons school acedamy.jpg"
+        alt="Gibson School Logo"
+      />
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Grade Selection Page -->
+      <main id="grade-selection-page">
+        <section id="grade-list">
+          <!-- Grades 1 to 12 will be dynamically added here -->
+        </section>
+      </main>
+
+      <!-- Subject Books Page (initially hidden) -->
+      <main id="subject-books-page" style="display: none">
+        <button id="back-button">Back to Grades</button>
+        <section id="book-list">
+          <!-- Books will be dynamically added here -->
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 School Library. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
