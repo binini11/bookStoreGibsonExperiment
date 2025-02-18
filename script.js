@@ -76,8 +76,7 @@ const booksByGrade = {
     {
       title: "Grade 3 English",
       image: "bookImage/Grade 3/Grade 3 English.png",
-      downloadLink:
-        "https://fetena.net/books_asset/books_34/collection/grade%203-english_fetena_net_eb40.pdf",
+      downloadLink: "books/grade 3-amharic_fetena_net_4a14.pdf",
     },
     {
       title: "Grade 3 Environmental-Science",
