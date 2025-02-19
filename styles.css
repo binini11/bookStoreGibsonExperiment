@@ -10,7 +10,23 @@ body {
   flex-direction: column;
 }
 
-/* Header Styles */
+/* Flex Container for Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header, Main, and Footer Styles */
+header,
+main,
+footer {
+  flex-shrink: 0;
+  width: 100%;
+}
+
 header {
   background: linear-gradient(135deg, #1bc44b, #17a844);
   color: white;
@@ -18,11 +34,6 @@ header {
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  position: fixed;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  width: 80%;
   z-index: 1000;
 }
 
@@ -46,9 +57,6 @@ header ul {
   padding: 0;
   list-style-type: none;
   margin: 20px 0 0;
-  position: absolute; /* Positioning the nav */
-  left: 20px; /* Adjust the left position as needed */
-  top: 140px; /* Align with header content */
 }
 
 header li {
@@ -84,12 +92,8 @@ main {
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 200px; /* Add space for fixed header */
-  margin-bottom: 60px; /* Add space for fixed footer */
-  width: 100%;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Footer Styles */
@@ -100,11 +104,6 @@ footer {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 0;
-  left: 10%;
-  right: 10%;
-  width: 80%;
 }
 
 /* Grade Cards */
@@ -224,4 +223,81 @@ footer {
 
 #back-button:hover {
   background-color: #45a049;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  main {
+    margin-top: 180px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  header ul {
+    top: 110px;
+  }
+
+  header img {
+    width: 120px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+
+  header {
+    padding: 10px;
+  }
+
+  main {
+    margin-top: 160px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  header ul {
+    top: 90px;
+  }
+
+  header img {
+    width: 100px;
+    height: 40px;
+  }
+
+  header li {
+    padding-right: 15px;
+  }
+
+  header a {
+    font-size: 0.9rem;
+  }
 }
