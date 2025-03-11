@@ -106,6 +106,40 @@ footer {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Search Bar Styles*/
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+#search-bar {
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #4caf50;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+#search-bar:focus {
+  border-color: #1bc44b;
+}
+
+#search-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#search-button:hover {
+  background: #45a049;
+}
+
+#search-button i {
+  font-size: 1rem;
+}
 /* Grade Cards */
 #grade-list {
   display: grid;

@@ -652,15 +652,32 @@ const booksByGrade = {
   ],
 };
 
+// Create a flat list of all books
+const allBooks = Object.values(booksByGrade).flat();
+
 // Cache elements that are accessed multiple times
 const gradeSelectionPage = document.getElementById("grade-selection-page");
 const subjectBooksPage = document.getElementById("subject-books-page");
 const bookList = document.getElementById("book-list");
+const searchBox = document.getElementById("search-bar");
+const searchButton = document.getElementById("search-button");
+
+let currentBooks = []; // Store the currently displayed books
 
 // Function to display grades
 function displayGrades() {
+  console.log("Displaying grades..."); // Debugging line
   const gradeList = document.getElementById("grade-list");
 
+  if (!gradeList) {
+    console.error("grade-list element not found!"); // Debugging line
+    return;
+  }
+
+  // Clear previous grade cards
+  gradeList.innerHTML = "";
+
+  // Create and append grade cards
   grades.forEach((grade) => {
     const gradeCard = document.createElement("div");
     gradeCard.classList.add("grade-card");
@@ -675,46 +692,95 @@ function displayGrades() {
 
 // Function to show books for a selected grade
 function showBooksForGrade(grade) {
-  // Show loading indicator
-  bookList.innerHTML = "<p>Loading books...</p>";
+  console.log(`Showing books for ${grade}...`); // Debugging line
+  bookList.innerHTML = "<p>Loading books...</p>"; // Show loading message
+  currentBooks = booksByGrade[grade] || []; // Get books for the selected grade
+  console.log("Current books after selection:", currentBooks); // Debugging line
 
   // Hide grade selection page and show subject books page
   gradeSelectionPage.style.display = "none";
   subjectBooksPage.style.display = "block";
 
-  // Display books for the selected grade
-  const books = booksByGrade[grade] || [];
-  setTimeout(() => {
-    bookList.innerHTML = ""; // Clear loading indicator
-    books.forEach((book) => {
-      const bookCard = document.createElement("a");
-      bookCard.classList.add("book-card");
-      bookCard.href = book.downloadLink || "#";
-      bookCard.setAttribute("download", true);
-
-      bookCard.innerHTML = `
-        <img src="${book.image || "default-image.png"}" alt="${book.title}">
-        <div class="book-info">
-          <h2>${book.title}</h2>
-        </div>
-      `;
-
-      bookList.appendChild(bookCard);
-    });
-  }, 500); // Simulating loading delay
+  displayBooks(currentBooks); // Display all books for the grade
 }
 
-// Consolidate back button functionality
+// Function to display books
+function displayBooks(books) {
+  console.log("Displaying books..."); // Debugging line
+  console.log("Books to display:", books); // Debugging line
+
+  bookList.innerHTML = ""; // Clear previous list
+
+  if (books.length === 0) {
+    console.log("No books found."); // Debugging line
+    bookList.innerHTML = "<p>No books found.</p>"; // No books message
+    return;
+  }
+
+  books.forEach((book) => {
+    const bookCard = document.createElement("a");
+    bookCard.classList.add("book-card");
+    bookCard.href = book.downloadLink || "#";
+    bookCard.setAttribute("download", true);
+
+    bookCard.innerHTML = `
+      <img src="${book.image || "default-image.png"}" alt="${book.title}">
+      <div class="book-info">
+        <h2>${book.title}</h2>
+      </div>
+    `;
+    bookList.appendChild(bookCard);
+  });
+}
+// Function to filter books based on search input
+function filterBooks() {
+  console.log("Filtering books..."); // Debugging line
+
+  // Get the search term
+  const searchTerm = searchBox.value.toLowerCase();
+  /* console.log("Search term:", searchTerm); */ // Debugging line
+
+  // Filter all books based on the search term
+  const filteredBooks = allBooks.filter((book) => {
+    const title = book.title.toLowerCase();
+    /* console.log(
+      `Book title: ${title}, Includes search term? ${title.includes(
+        searchTerm
+      )}` );*/
+    // Debugging line
+    return title.includes(searchTerm);
+  });
+
+  console.log("Filtered books:", filteredBooks); // Debugging line
+
+  // Display the filtered books
+  console.log("Displaying filtered books..."); // Debugging line
+  displayBooks(filteredBooks);
+  // Hide grade selection page and show subject books page
+  gradeSelectionPage.style.display = "none";
+  subjectBooksPage.style.display = "block";
+}
+
+// Search box event listener
+/* searchBox.addEventListener("input", filterBooks);
+ */
+// Search button event listener
+searchButton.addEventListener("click", () => {
+  filterBooks(); //Trigger the filter function
+});
+
+// Back button functionality
+document.getElementById("back-button").addEventListener("click", () => {
+  gradeSelectionPage.style.display = "block";
+  subjectBooksPage.style.display = "none";
+});
+
+// Navigation functions
 function showHomePage() {
   gradeSelectionPage.style.display = "block";
   subjectBooksPage.style.display = "none";
   document.getElementById("about-us-page").style.display = "none";
 }
-
-document.getElementById("back-button").addEventListener("click", showHomePage);
-
-// Call the function to display grades on page load
-displayGrades();
 
 function showAboutUsPage() {
   gradeSelectionPage.style.display = "none";
@@ -722,10 +788,19 @@ function showAboutUsPage() {
   document.getElementById("about-us-page").style.display = "block";
 }
 
-// Event listeners for navigation links with aria attributes
-document.getElementById("home-link").addEventListener("click", showHomePage);
-document
-  .getElementById("about-link")
-  .addEventListener("click", showAboutUsPage)
-  .setAttribute("aria-label", "About Us");
-document.getElementById("home-link").setAttribute("aria-label", "Home");
+// Event listeners for navigation links
+document.getElementById("home-link").addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent default link behavior
+  showHomePage();
+});
+
+document.getElementById("about-link").addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent default link behavior
+  showAboutUsPage();
+});
+
+// Call the function to display grades on page load
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM fully loaded and parsed"); // Debugging line
+  displayGrades();
+});

@@ -12,23 +12,34 @@
   </head>
   <body>
     <header>
-      <h1>Gibson School Book Store</h1>
+      <h1>GSS E-Book Store</h1>
       <p>Explore our collection of books</p>
-
-      <img
-        src="bookImage/gibsons school acedamy.jpg"
-        alt="Gibson School Logo"
-      />
       <nav>
         <ul>
           <li><a href="#" id="home-link">Home</a></li>
           <li><a href="#" id="about-link">About Us</a></li>
+          <li><a href="#" id="grade-books-link">Grade Books</a></li>
+          <li><a href="#" id="model-exams-link">Model Exams</a></li>
+          <li><a href="#" id="extreme-books-link">Extreme Books Series</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- Main Content Container -->
     <div class="container">
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search books by title, subject, or grade..."
+          aria-label="Search books"
+        />
+        <button id="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
       <!-- Grade Selection Page -->
       <main id="grade-selection-page">
         <section id="grade-list">
@@ -42,6 +53,18 @@
         <section id="book-list">
           <!-- Books will be dynamically added here -->
         </section>
+      </main>
+
+      <!-- Model Exams Page (initially hidden) -->
+      <main id="model-exams-page" style="display: none">
+        <h2>Model Exams</h2>
+        <!-- Content for Model Exams Page -->
+      </main>
+
+      <!-- Extreme Books Series Page (initially hidden) -->
+      <main id="extreme-books-page" style="display: none">
+        <h2>Extreme Books Series</h2>
+        <!-- Content for Extreme Books Series Page -->
       </main>
 
       <!-- About Us Page (initially hidden) -->
