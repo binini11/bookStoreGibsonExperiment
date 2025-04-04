@@ -12,90 +12,120 @@
   </head>
   <body>
     <header>
-      <h1>GSS E-Book Store</h1>
-      <p>Explore our collection of books</p>
+      <div class="header-content">
+        <h1>GSS E-Book Store</h1>
+        <p class="tagline">Explore our collection of books and exams</p>
+      </div>
+
       <nav>
-        <ul>
+        <ul id="main-nav">
           <li><a href="#" id="home-link">Home</a></li>
-          <li><a href="#" id="about-link">About Us</a></li>
           <li><a href="#" id="grade-books-link">Grade Books</a></li>
           <li><a href="#" id="model-exams-link">Model Exams</a></li>
-          <li><a href="#" id="extreme-books-link">Extreme Books Series</a></li>
+          <li><a href="#" id="extreme-books-link">Extreme Books</a></li>
+          <li><a href="#" id="about-link">About Us</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- Main Content Container -->
-    <div class="container">
-      <!-- Search Bar -->
-      <div class="search-container">
-        <input
-          type="text"
-          id="search-bar"
-          placeholder="Search books by title, subject, or grade..."
-          aria-label="Search books"
-        />
-        <button id="search-button">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-
-      <!-- Grade Selection Page -->
-      <main id="grade-selection-page">
-        <section id="grade-list">
-          <!-- Grades 1 to 12 will be dynamically added here -->
-        </section>
-      </main>
-
-      <!-- Subject Books Page (initially hidden) -->
-      <main id="subject-books-page" style="display: none">
-        <button id="back-button">Back to Grades</button>
-        <section id="book-list">
-          <!-- Books will be dynamically added here -->
-        </section>
-      </main>
-
-      <!-- Model Exams Page (initially hidden) -->
-      <main id="model-exams-page" style="display: none">
-        <h2>Model Exams</h2>
-        <!-- Content for Model Exams Page -->
-      </main>
-
-      <!-- Extreme Books Series Page (initially hidden) -->
-      <main id="extreme-books-page" style="display: none">
-        <h2>Extreme Books Series</h2>
-        <!-- Content for Extreme Books Series Page -->
-      </main>
-
-      <!-- About Us Page (initially hidden) -->
-      <main id="about-us-page" style="display: none">
-        <div class="about-content">
-          <h2>About Us</h2>
-          <p>
-            Welcome to the Gibson School Book Store! We are dedicated to
-            providing students with access to a wide range of educational
-            resources. Our collection includes textbooks and reference materials
-            for grades 1 through 12.
-          </p>
-          <p>
-            Our mission is to support learning and inspire a love for reading.
-            Whether you're looking for academic books or recreational reading,
-            we've got you covered.
-          </p>
-          <h3>Our Team</h3>
-          <p>
-            Our team consists of eight seventh-grade Gibson School Lafto branch
-            students who are aspiring to solve students' problems. This project
-            is made for experimental bases for the science fair project. We
-            would like to express our gratitude to fetena.net for the
-            downloadable academic books we have used.
-          </p>
+    <main class="main-content">
+      <div class="container">
+        <!-- Search Bar -->
+        <div class="search-container" role="search">
+          <input
+            type="search"
+            id="search-bar"
+            placeholder="Search books by title, subject, or grade..."
+            aria-label="Search books"
+            aria-controls="book-list"
+          />
+          <button id="search-button" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
         </div>
-      </main>
-    </div>
+
+        <!-- Grade Selection Page -->
+        <section id="grade-selection-page">
+          <h2>Select Grade Level</h2>
+          <div id="grade-list" class="main-grid">
+            <!-- Grades 1 to 12 will be dynamically added here -->
+          </div>
+        </section>
+
+        <!-- Subject Books Page (initially hidden) -->
+        <section id="subject-books-page" style="display: none">
+          <button id="back-button" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+          </button>
+          <div id="book-list" class="main-grid">
+            <!-- Books will be dynamically added here -->
+          </div>
+        </section>
+
+        <!-- Model Exams Page (initially hidden) -->
+        <section id="model-exams-page" style="display: none">
+          <button id="model-exams-back-button" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+
+          <!-- Categories View -->
+          <div id="model-exams-categories">
+            <h2>Model Exams</h2>
+            <p>Select an exam category:</p>
+            <div id="model-exams-list" class="exams-grid">
+              <!-- Categories will be added here dynamically -->
+            </div>
+          </div>
+
+          <!-- Subjects View -->
+          <div id="model-exams-subjects" style="display: none">
+            <h2 id="exam-category-title"></h2>
+            <p>Select a subject:</p>
+            <div id="exam-subjects-list" class="exams-grid">
+              <!-- Subjects will be added here dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Extreme Books Series Page (initially hidden) -->
+        <section id="extreme-books-page" style="display: none">
+          <h2>Extreme Books Series</h2>
+          <!-- Content will be added here -->
+        </section>
+
+        <!-- About Us Page (initially hidden) -->
+        <section id="about-us-page" style="display: none">
+          <div class="about-content">
+            <h2>About Us</h2>
+            <p>
+              Welcome to the Gibson School Book Store! We are dedicated to
+              providing students with access to a wide range of educational
+              resources. Our collection includes textbooks and reference
+              materials for grades 1 through 12.
+            </p>
+            <p>
+              Our mission is to support learning and inspire a love for reading.
+              Whether you're looking for academic books or recreational reading,
+              we've got you covered.
+            </p>
+            <h3>Our Team</h3>
+            <p>
+              Our team consists of eight seventh-grade Gibson School Lafto
+              branch students who are aspiring to solve students' problems. This
+              project is made for experimental bases for the science fair
+              project. We would like to express our gratitude to fetena.net for
+              the downloadable academic books we have used.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
 
     <footer>
-      <p>&copy; 2025 School Library. All rights reserved.</p>
+      <div class="footer-content">
+        <p>&copy; 2025 Gibson School Library. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
