@@ -663,7 +663,7 @@ const modelExams = {
       {
         title: "Grade 8 Amharic Model Exam 2023",
         image: "exams/amharic-grade10.png",
-        downloadLink: "https://fetena.net/start/ministry/english_47",
+        downloadLink: "bookStoreGibsonExperiment/books/Exams.html",
         grade: "Grade 8",
         year: "2023",
         type: "",
