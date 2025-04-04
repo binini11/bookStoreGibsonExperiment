@@ -671,7 +671,7 @@ const modelExams = {
       {
         title: "Grade 8 Amharic Model Exam 2024",
         image: "exams/amharic-grade12.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2024",
         type: "",
@@ -681,7 +681,7 @@ const modelExams = {
       {
         title: "Grade 8 English Model Exam 2023",
         image: "exams/english-grade10.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2023",
         type: "",
@@ -689,7 +689,7 @@ const modelExams = {
       {
         title: "Grade 8 English Model Exam 2024",
         image: "exams/english-grade12.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2024",
         type: "",
@@ -707,7 +707,7 @@ const modelExams = {
       {
         title: "Grade 8 Mathematics Model Exam 2024",
         image: "exams/math-grade11.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2024",
         type: "",
@@ -717,7 +717,7 @@ const modelExams = {
       {
         title: "Grade 8 Social Studies Model Exam 2023",
         image: "exams/social-grade8.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2023",
         type: "",
@@ -727,7 +727,7 @@ const modelExams = {
       {
         title: "Grade 8 Civics Model Exam 2024",
         image: "exams/civics-grade11.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2024",
         type: "",
@@ -739,7 +739,7 @@ const modelExams = {
       {
         title: "Grade 8 Amharic Model Exam 2023",
         image: "exams/amharic-grade10.png",
-        downloadLink: "bookStoreGibsonExperiment/books/Exams.html",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2023",
         type: "",
@@ -747,7 +747,7 @@ const modelExams = {
       {
         title: "Grade 8 Amharic Model Exam 2024",
         image: "exams/amharic-grade12.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2024",
         type: "",
@@ -757,7 +757,7 @@ const modelExams = {
       {
         title: "Grade 8 English Model Exam 2023",
         image: "exams/english-grade10.png",
-        downloadLink: "https://fetena.net/start/ministry/english_47",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2023",
         type: "",
@@ -765,7 +765,7 @@ const modelExams = {
       {
         title: "Grade 8 English Model Exam 2024",
         image: "exams/english-grade12.png",
-        downloadLink: "#",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2024",
         type: "",
