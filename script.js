@@ -661,75 +661,75 @@ const modelExams = {
   Ministry: {
     Amharic: [
       {
-        title: "Grade 8 Amharic Model Exam 2023",
+        title: "Grade 8 Amharic Model Exam 2022",
         image: "exams/amharic-grade10.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2023",
+        year: "2022",
         type: "",
       },
       {
-        title: "Grade 8 Amharic Model Exam 2024",
+        title: "Grade 8 Amharic Model Exam 2023",
         image: "exams/amharic-grade12.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2024",
+        year: "2023",
         type: "",
       },
     ],
     English: [
       {
-        title: "Grade 8 English Model Exam 2023",
+        title: "Grade 8 English Model Exam 2022",
         image: "exams/english-grade10.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2023",
+        year: "2022",
         type: "",
       },
       {
-        title: "Grade 8 English Model Exam 2024",
+        title: "Grade 8 English Model Exam 2023",
         image: "exams/english-grade12.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2024",
+        year: "2023",
         type: "",
       },
     ],
     Mathematics: [
       {
-        title: "Grade 8 Mathematics Model Exam 2023",
+        title: "Grade 8 Mathematics Model Exam 2022",
         image: "exams/math-grade9.png",
         downloadLink: "#",
         grade: "Grade 8",
-        year: "2023",
+        year: "2022",
         type: "",
       },
       {
-        title: "Grade 8 Mathematics Model Exam 2024",
+        title: "Grade 8 Mathematics Model Exam 2023",
         image: "exams/math-grade11.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2024",
+        year: "2023",
         type: "",
       },
     ],
     "Social Studies": [
       {
-        title: "Grade 8 Social Studies Model Exam 2023",
+        title: "Grade 8 Social Studies Model Exam 2022",
         image: "exams/social-grade8.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2023",
+        year: "2022",
         type: "",
       },
     ],
     "Civics and Ethical Education": [
       {
-        title: "Grade 8 Civics Model Exam 2024",
+        title: "Grade 8 Civics Model Exam 2023",
         image: "exams/civics-grade11.png",
         downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
-        year: "2024",
+        year: "2023",
         type: "",
       },
     ],
@@ -737,70 +737,67 @@ const modelExams = {
   matriculation: {
     Amharic: [
       {
-        title: "Grade 8 Amharic Model Exam 2023",
+        title: "Grade 12 Amharic Model Exam 2022",
         image: "exams/amharic-grade10.png",
         downloadLink: "books/Exams.pdf",
-        grade: "Grade 8",
-        year: "2023",
+        grade: "Grade 12",
+        year: "2022",
         type: "",
       },
       {
-        title: "Grade 8 Amharic Model Exam 2024",
+        title: "Grade 12 Amharic Model Exam 2023",
         image: "exams/amharic-grade12.png",
         downloadLink: "books/Exams.pdf",
-        grade: "Grade 8",
-        year: "2024",
+        grade: "Grade 12",
+        year: "2023",
         type: "",
       },
     ],
     English: [
       {
-        title: "Grade 8 English Model Exam 2023",
+        title: "Grade 12 English Model Exam 2022",
         image: "exams/english-grade10.png",
         downloadLink: "books/Exams.pdf",
-        grade: "Grade 8",
-        year: "2023",
+        grade: "Grade 12",
+        year: "2022",
         type: "",
       },
       {
-        title: "Grade 8 English Model Exam 2024",
+        title: "Grade 12 English Model Exam 2023",
         image: "exams/english-grade12.png",
         downloadLink: "books/Exams.pdf",
-        grade: "Grade 8",
-        year: "2024",
+        grade: "Grade 12",
+        year: "2023",
         type: "",
       },
     ],
   },
 };
 
-// ======================
-// DOM ELEMENTS & STATE
-// ======================
-
+// DOM Elements
 const pages = {
   home: document.getElementById("grade-selection-page"),
   books: document.getElementById("subject-books-page"),
   exams: document.getElementById("model-exams-page"),
-  about: document.getElementById("about-us-page"),
   extreme: document.getElementById("extreme-books-page"),
+  about: document.getElementById("about-us-page"),
 };
 
-const bookList = document.getElementById("book-list");
-const searchBox = document.getElementById("search-bar");
-const examSearchBox = document.createElement("input"); // Will be added dynamically
+// Navigation Functions
+function showPage(page) {
+  Object.values(pages).forEach((p) => (p.style.display = "none"));
+  pages[page].style.display = "block";
 
-let currentView = {
-  type: null, // 'books' or 'exams'
-  category: null,
-  subject: null,
-  items: [],
-};
+  if (page === "home") displayGrades();
+  if (page === "exams") {
+    document.getElementById("model-exams-categories").style.display = "block";
+    document.getElementById("model-exams-subjects").style.display = "none";
+    displayExamCategories();
+  }
+  if (page === "extreme") startCountdown();
+}
 
-// ======================
-// CORE DISPLAY FUNCTIONS
-// ======================
-
+// Grade Books Functions
 function displayGrades() {
   const gradeList = document.getElementById("grade-list");
   gradeList.innerHTML = "";
@@ -809,29 +806,31 @@ function displayGrades() {
     const gradeCard = document.createElement("div");
     gradeCard.className = "grade-card";
     gradeCard.innerHTML = `
-      <i class="fas fa-folder"></i>
-      <h2>${grade}</h2>
-    `;
+            <i class="fas fa-folder"></i>
+            <h2>${grade}</h2>
+        `;
     gradeCard.addEventListener("click", () => showBooksForGrade(grade));
     gradeList.appendChild(gradeCard);
   });
 }
 
 function showBooksForGrade(grade) {
-  currentView = {
-    type: "books",
-    category: grade,
-    subject: null,
-    items: booksByGrade[grade] || [],
-  };
-  showPage("books");
-  displayItems(currentView.items);
+  currentBooks = booksByGrade[grade] || [];
+  currentExams = []; // Explicitly clear exams when showing grade books
+  document.getElementById("exam-subject-title").textContent = `${grade} Books`;
+
+  // Hide all pages
+  document.getElementById("grade-selection-page").style.display = "none";
+  document.getElementById("model-exams-page").style.display = "none";
+  document.getElementById("about-us-page").style.display = "none";
+  document.getElementById("extreme-books-page").style.display = "none";
+
+  // Show books page
+  document.getElementById("subject-books-page").style.display = "block";
+  displayItems(currentBooks);
 }
 
-// ======================
-// EXAM-SPECIFIC FUNCTIONS
-// ======================
-
+// Model Exams Functions
 function displayExamCategories() {
   const examList = document.getElementById("model-exams-list");
   examList.innerHTML = "";
@@ -843,15 +842,13 @@ function displayExamCategories() {
     const categoryCard = document.createElement("div");
     categoryCard.className = "exam-category-card";
     categoryCard.innerHTML = `
-      <i class="fas fa-folder-open"></i>
-      <h2>${category}</h2>
-      <div class="exam-stats">
-        <span>${subjectCount} ${
-      subjectCount === 1 ? "Subject" : "Subjects"
-    }</span>
-        <span>${examCount} ${examCount === 1 ? "Exam" : "Exams"}</span>
-      </div>
-    `;
+            <i class="fas fa-folder-open"></i>
+            <h2>${category}</h2>
+            <div class="exam-stats">
+                <span>${subjectCount} Subjects</span>
+                <span>${examCount} Exams</span>
+            </div>
+        `;
     categoryCard.addEventListener("click", () => showExamSubjects(category));
     examList.appendChild(categoryCard);
   }
@@ -867,19 +864,17 @@ function showExamSubjects(category) {
     const subjectCard = document.createElement("div");
     subjectCard.className = "exam-subject-card";
     subjectCard.innerHTML = `
-      <i class="fas fa-book"></i>
-      <h3>${subject}</h3>
-      <span>${exams.length} ${exams.length === 1 ? "exam" : "exams"}</span>
-    `;
+            <i class="fas fa-book"></i>
+            <h3>${subject}</h3>
+            <span>${exams.length} Exams</span>
+        `;
     subjectCard.addEventListener("click", () => {
-      currentView = {
-        type: "exams",
-        category: category,
-        subject: subject,
-        items: exams,
-      };
-      showPage("books"); // Use books page but with exam layout
-      displayItems(currentView.items);
+      currentExams = exams;
+      document.getElementById(
+        "exam-subject-title"
+      ).textContent = `${category} - ${subject} Exams`;
+      showPage("books");
+      displayItems(currentExams);
     });
     subjectList.appendChild(subjectCard);
   }
@@ -888,11 +883,9 @@ function showExamSubjects(category) {
   document.getElementById("model-exams-subjects").style.display = "block";
 }
 
-// ======================
-// ITEM DISPLAY FUNCTION
-// ======================
-
+// Common Functions
 function displayItems(items) {
+  const bookList = document.getElementById("book-list");
   bookList.innerHTML = "";
 
   if (items.length === 0) {
@@ -900,105 +893,44 @@ function displayItems(items) {
     return;
   }
 
-  // Set appropriate title
-  const titleElement =
-    document.getElementById("exam-subject-title") ||
-    document.createElement("h2");
-  if (currentView.type === "exams") {
-    titleElement.textContent = `${currentView.category} - ${currentView.subject} Exams`;
-  } else {
-    titleElement.textContent = `${currentView.category} Books`;
-  }
-
   items.forEach((item) => {
     const card = document.createElement("div");
-    card.className = "item-card";
+    card.className = "book-card";
 
-    if (currentView.type === "exams") {
-      // Exam Card Layout
+    if (item.grade) {
+      // Exam card
       card.innerHTML = `
-        <div class="exam-card">
-          <div class="exam-header">
-            <h3>${item.title}</h3>
-            <div class="exam-grade">${item.grade}</div>
-          </div>
-          <div class="exam-meta">
-            <span><i class="fas fa-calendar-alt"></i> ${item.year}</span>
-            
-            ${
-              item.region
-                ? `<span><i class="fas fa-map-marker-alt"></i> ${item.region}</span>`
-                : ""
-            }
-          </div>
-          
-          <a href="${
-            item.downloadLink
-          }" class="download-button" target="_blank" download>
-            <i class="fas fa-download"></i> Download
-          </a>
-        </div>
-      `;
+                <div class="exam-card">
+                    <h3>${item.title}</h3>
+                    <div class="exam-meta">
+                        <span>${item.grade}</span>
+                        <span>${item.year}</span>
+                    </div>
+                    <a href="${item.downloadLink}" class="download-button" download>
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            `;
     } else {
-      // Book Card Layout
+      // Book card
       card.innerHTML = `
-        <a href="${
-          item.downloadLink
-        }" class="book-card" target="_blank" download>
-          <div class="book-image-container">
-            <img src="${item.image || "default-book.png"}" 
-                 alt="${item.title}" 
-                 onerror="this.src='default-book.png'">
-          </div>
-          <div class="book-info">
-            <h3>${item.title}</h3>
-            <span class="download-label">Download</span>
-          </div>
-        </a>
-      `;
+                <a href="${item.downloadLink}" target="_blank" download>
+                    <img src="${item.image || "default-book.png"}" alt="${
+        item.title
+      }">
+                    <div class="book-info">
+                        <h3>${item.title}</h3>
+                        <span class="download-label">Download</span>
+                    </div>
+                </a>
+            `;
     }
+
     bookList.appendChild(card);
   });
 }
 
-// ======================
-// NAVIGATION & PAGE MANAGEMENT
-// ======================
-
-function showPage(page) {
-  // Hide all pages
-  Object.values(pages).forEach((p) => (p.style.display = "none"));
-
-  // Show requested page
-  pages[page].style.display = "block";
-
-  // Special cases
-  if (page === "home") displayGrades();
-  if (page === "exams") {
-    document.getElementById("model-exams-categories").style.display = "block";
-    document.getElementById("model-exams-subjects").style.display = "none";
-    displayExamCategories();
-  }
-}
-
-function handleBackButton() {
-  if (currentView.type === "exams") {
-    if (
-      document.getElementById("model-exams-subjects").style.display === "block"
-    ) {
-      showPage("exams");
-    } else {
-      showPage("home");
-    }
-  } else {
-    showPage("home");
-  }
-}
-
-// ======================
-// EVENT LISTENERS
-// ======================
-
+// Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   displayGrades();
 
@@ -1013,30 +945,51 @@ document.addEventListener("DOMContentLoaded", () => {
     showPage("about");
   });
 
-  document.getElementById("model-exams-link").addEventListener("click", (e) => {
-    e.preventDefault();
-    showPage("exams");
-  });
-
   document.getElementById("grade-books-link").addEventListener("click", (e) => {
     e.preventDefault();
     showPage("home");
   });
 
-  // Back buttons
+  document.getElementById("model-exams-link").addEventListener("click", (e) => {
+    e.preventDefault();
+    showPage("exams");
+  });
+
   document
-    .getElementById("back-button")
-    .addEventListener("click", handleBackButton);
+    .getElementById("extreme-books-link")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      showPage("extreme");
+    });
+
+  // Back buttons
+
+  document.getElementById("back-button").addEventListener("click", function () {
+    // If coming from grade books view
+    if (currentBooks.length > 0 && currentExams.length === 0) {
+      showPage("home"); // Go back to grade selection
+    }
+    // If coming from exams view
+    else if (currentExams.length > 0) {
+      document.getElementById("subject-books-page").style.display = "none";
+      document.getElementById("model-exams-subjects").style.display = "block";
+    }
+    // Default fallback
+    else {
+      showPage("home");
+    }
+  });
+
   document
     .getElementById("model-exams-back-button")
-    .addEventListener("click", handleBackButton);
-
-  // Search
-  searchBox.addEventListener("input", () => {
-    const term = searchBox.value.toLowerCase();
-    const filtered = allBooks.filter((book) =>
-      book.title.toLowerCase().includes(term)
-    );
-    displayItems(filtered);
-  });
+    .addEventListener("click", () => {
+      if (
+        document.getElementById("model-exams-subjects").style.display ===
+        "block"
+      ) {
+        showPage("exams");
+      } else {
+        showPage("home");
+      }
+    });
 });
