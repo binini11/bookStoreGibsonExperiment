@@ -734,7 +734,7 @@ const modelExams = {
       },
     ],
   },
-  matriculation: {
+  Matriculation: {
     Amharic: [
       {
         title: "Grade 12 Amharic Model Exam 2022",
