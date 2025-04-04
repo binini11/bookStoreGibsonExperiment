@@ -663,7 +663,7 @@ const modelExams = {
       {
         title: "Grade 8 Amharic Model Exam 2023",
         image: "exams/amharic-grade10.png",
-        downloadLink: "bookStoreGibsonExperiment/books/Exams.html",
+        downloadLink: "books/Exams.pdf",
         grade: "Grade 8",
         year: "2023",
         type: "",
